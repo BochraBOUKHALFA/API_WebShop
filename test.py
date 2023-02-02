@@ -1,5 +1,5 @@
 import unittest
-from functions import filter_stock , filter_custemer , filter_order
+from functions import filter_stock, filter_custemer, filter_order
 
 
 class TestFilterStock(unittest.TestCase):
@@ -21,6 +21,7 @@ class TestFilterStock(unittest.TestCase):
         ]
         product_id = 5
         self.assertIsNone(filter_stock(products, product_id))
+
 
 class TestFilterOrder(unittest.TestCase):
     def test_filter_order_returns_correct_value(self):
