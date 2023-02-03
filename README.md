@@ -9,3 +9,4 @@
 * Afficher les commande de tous les cliens 
 * Afficher une commande d'un client
 * Afficher tous les clients 
+* Afficher un client

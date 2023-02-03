@@ -7,7 +7,7 @@ def filter_stock(products, product_id):
 def filter_product(products, product_id):
     for product in products:
         if product['id'] == product_id and product['stock'] > 0:
-            return product.json
+            return product
 
 
 def filter_stocks(products):
@@ -32,11 +32,11 @@ def filter_custemer(custemers, custemer_id):
             return custemer
 
 
-def filter_custemers_ordors(custemers):
+def filter_custemers_orders(custemers):
     custemer_names_and_ordor = []
     for custemer in custemers:
         custemer_names_and_ordor.append({
             "name": custemer["name"],
-            "stock": custemer["stock"]
+            "orders": custemer["orders"]
         })
     return custemer_names_and_ordor
