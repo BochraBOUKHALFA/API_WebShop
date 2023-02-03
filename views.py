@@ -1,7 +1,7 @@
 import requests
 from flask import Flask, jsonify, request
 from key import check_api_key
-from functions import filter_stock, filter_order, filter_custemer , filter_stocks
+from functions import filter_stock, filter_order, filter_custemer, filter_stocks, filter_custemers_ordors
 from config import KEY, END_POINT
 from app import app
 
@@ -26,6 +26,20 @@ def get_products_info():
 
 
 
+@app.route('/products/stock', methods=['GET'])
+def get_product_info():
+    request.headers.get('API_KEY')
+    if check_api_key() is not None:
+        return check_api_key()
+    else:
+        endpoint_url = END_POINT
+        response = requests.get(endpoint_url)
+        if response.status_code != 200:
+            return erreur + response.text, response.status_code
+        else:
+            product = response.json()
+            filtered_stock_name = filter_stocks(product)
+            return jsonify(filtered_stock_name), response.status_code
 
 
 @app.route('/product/stock/<product_id>', methods=['GET'])
@@ -45,6 +59,22 @@ def get_product_stock(product_id):
 
 
 # CRM
+
+@app.route('/custemers/ordors', methods=['GET'])
+def get_custemers_ordors():
+    request.headers.get('API_KEY')
+    if check_api_key() is not None:
+        return check_api_key()
+    endpoint_url = END_POINT
+    response = requests.get(endpoint_url)
+    if response.status_code != 200:
+        return erreur + response.text, response.status_code
+    else:
+        custemer_ordors = response.json()
+        filtered_orders = filter_custemers_ordors(custemer_ordors)
+        return jsonify(filtered_orders), response.status_code
+
+
 @app.route('/ordor/<custemer_id>', methods=['GET'])
 def get_ordor(custemer_id):
     request.headers.get('API_KEY')
