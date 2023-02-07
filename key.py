@@ -1,5 +1,5 @@
-import requests
-from flask import Flask, jsonify, request
+
+from flask import request
 from config import KEY
 
 

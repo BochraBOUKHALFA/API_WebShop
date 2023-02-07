@@ -1,0 +1,5 @@
+static
+templates
+venv
+.idea
+config.py
