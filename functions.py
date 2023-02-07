@@ -20,23 +20,33 @@ def filter_stocks(products):
     return product_names_and_stocks
 
 
-def filter_order(custemers, custemer_id):
-    for custemer in custemers:
-        if custemer['id'] == custemer_id:
-            return custemer['username'], custemer['orders']
+def filter_order(customers, customer_id):
+    for customer in customers:
+        if customer['id'] == customer_id:
+            return customer['username'], customer['orders']
 
 
-def filter_custemer(custemers, custemer_id):
-    for custemer in custemers:
-        if custemer['id'] == custemer_id:
-            return custemer
+def filter_product_order(customers, customer_id,orders, product_id):
+    for customer in customers:
+        if customer['id'] == customer_id:
+            for order in orders:
+                if order['id'] == product_id:
+                    return order
 
 
-def filter_custemers_orders(custemers):
-    custemer_names_and_ordor = []
-    for custemer in custemers:
-        custemer_names_and_ordor.append({
-            "name": custemer["name"],
-            "orders": custemer["orders"]
+def filter_customer(customers, customer_id):
+    for customer in customers:
+        if customer['id'] == customer_id:
+            return customer
+
+
+def filter_customers_orders(customers):
+    customer_names_and_order = []
+    for customer in customers:
+        customer_names_and_order.append({
+            "name": customer["name"],
+            "orders": customer["orders"]
         })
-    return custemer_names_and_ordor
+    return customer_names_and_order
+
+
