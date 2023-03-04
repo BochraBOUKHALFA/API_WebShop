@@ -14,7 +14,7 @@ erreur = "Error: "
 
 @app.route('/products', methods=['GET'])
 def get_products_info():
-    request.headers.get('API_KEY')
+    request.args.get('API_KEY')
     if check_api_key() is not None:
         return check_api_key()
     else:
