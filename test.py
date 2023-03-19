@@ -1,5 +1,5 @@
 import unittest
-from functions import filter_stock , filter_custemer , filter_order
+from functions import filter_stock, filter_customer, filter_order
 
 
 class TestFilterStock(unittest.TestCase):
@@ -22,6 +22,7 @@ class TestFilterStock(unittest.TestCase):
         product_id = 5
         self.assertIsNone(filter_stock(products, product_id))
 
+
 class TestFilterOrder(unittest.TestCase):
     def test_filter_order_returns_correct_value(self):
         customers = [
@@ -43,16 +44,25 @@ class TestFilterOrder(unittest.TestCase):
         self.assertIsNone(filter_order(customers, customer_id))
 
 
-class TestFilterCustemer(unittest.TestCase):
-    def test_filter_custemer_returns_correct_value(self):
-        custemers = [
+class TestFilterCustomer(unittest.TestCase):
+    def test_filter_customer_returns_correct_value(self):
+        customers = [
             {'id': 1, 'username': 'bochra', 'orders': [1, 2, 3]},
             {'id': 2, 'username': 'kenza', 'orders': [4, 5]},
             {'id': 3, 'username': 'anis', 'orders': [6, 7, 8, 9]}
         ]
-        custemer_id = 1
+        customer_id = 1
         expected_result = {'id': 1, 'username': 'bochra', 'orders': [1, 2, 3]}
-        self.assertEqual(filter_custemer(custemers, custemer_id), expected_result)
+        self.assertEqual(filter_customer(customers, customer_id), expected_result)
+
+    def test_filter_customer_returns_none_when_customer_not_found(self):
+        customers = [
+            {'id': 1, 'username': 'bochra', 'orders': [1, 2, 3]},
+            {'id': 2, 'username': 'kenza', 'orders': [4, 5]},
+            {'id': 3, 'username': 'anis', 'orders': [6, 7, 8, 9]}
+        ]
+        customer_id = 5
+        self.assertIsNone(filter_order(customers, customer_id))
 
 
 if __name__ == '__main__':
