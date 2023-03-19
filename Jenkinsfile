@@ -7,7 +7,7 @@ pipeline {
         {
           steps
            {
-                git branch: 'feature/jenkinstest',
+                git branch: 'main',
                 credentialsId: 'Bochra',
                 url: 'https://github.com/bouchrasource/API_WebShop.git'
            }
